@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="DynaStock: A Dynamic Benchmark for Strategic Adaptability of Large Language Models in Realistic Multi-Market Trading.">
+  <meta property="og:title" content="DynaStock: Strategic Adaptability Benchmark for Financial LLMs"/>
+  <meta property="og:description" content="A rolling evaluation framework auditing adaptive reasoning and strategic compliance of LLMs in continuous, multi-market trading."/>
+  <meta property="og:url" content="https://dynastock.github.io"/>
+  <meta property="og:image" content="static/images/paper_logo.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="DynaStock: Strategic Adaptability Benchmark for Financial LLMs">
+  <meta name="twitter:description" content="A rolling evaluation framework for LLMs in realistic multi-market trading.">
+  <meta name="twitter:image" content="static/images/paper_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="Large Language Models, Financial LLM, Quantitative Trading, Stock Market, Benchmark, A-share, HK Stock, US Stock, Strategic Adaptability">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DynaStock: A Dynamic Benchmark for Financial LLMs</title>
+  <link rel="icon" type="image/png" href="static/images/paper_logo.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">DynaStock: A Dynamic Benchmark for Strategic Adaptability of Large Language Models in Realistic Multi-Market Trading</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Anonymous Submission
+              </span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://github.com/DynaStock/DynaStock" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code & Dataset</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://dynastock.github.io" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-globe"></i>
+                </span>
+                <span>Project Page</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+
+      <div class="has-text-centered" style="margin-bottom: 2rem;">
+         <img src="static/images/paper_logo.png"
+              alt="DynaStock Logo"
+              style="background-color: white;
+                     border-radius: 20px;
+                     padding: 15px;
+                     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                     width: 140px;
+                     height: 140px;
+                     object-fit: contain;">
+      </div>
+
+      <div class="container is-max-desktop" style="margin: 2rem auto;">
+        <div class="notification is-info is-light">
+          <p class="title is-4 has-text-centered">TL;DR</p>
+          <div class="content has-text-centered" style="font-size: 1.1rem; line-height: 1.6;">
+            <p>
+              <strong>DynaStock</strong> is a rolling evaluation framework that audits the adaptive reasoning and strategic compliance of LLMs in continuous, multi-market trading. By introducing Graded Strategy and Attitude Scaffolding, it distinguishes genuine financial reasoning from unconstrained gambling on memorized patterns.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Current evaluation paradigms for Large Language Models (LLMs) in the financial sector rely heavily on static question-answering datasets. Furthermore, simulated trading evaluations frequently neglect real-world market frictions, such as minimum trading lot sizes and capital constraints. These limitations render existing evaluations inadequate for reflecting a model's adaptive capabilities within authentic, continuous trading environments, leading to a severe disconnect between public benchmark performance and real-world deployment reliability.
+          </p>
+          <p>
+            To address this critical gap, we propose <strong>DynaStock</strong>: the first long-term, closed-loop trading evaluation benchmark grounded in multi-source heterogeneous data and a graded strategy architecture. We construct fine-grained datasets encompassing multiple core global markets, employing recent time windows to mitigate data memorization biases. Additionally, we incorporate stocks exhibiting both upward and downward trends to comprehensively assess the models' decision-making logic across diverse market dynamics.
+          </p>
+          <p>
+            DynaStock introduces <strong>Graded Strategy and Attitude Scaffolding</strong>, requiring models to explicitly output their selected strategy alongside the rationale for their trading decisions. This precisely quantifies their compliance and execution capabilities, supported by a comprehensive suite of native financial metrics.
+          </p>
+          <p>
+            Based on an extensive evaluation of several state-of-the-art LLMs using this benchmark, we reveal the following key insights: <strong>(1) reasoning patterns are model-dependent</strong>; <strong>(2) strategies and risk attitudes are market-dependent</strong>; and <strong>(3) models exhibit an asymmetry in trend adaptation</strong>. In conclusion, the application of LLMs in financial trading presents concurrent challenges and opportunities. The primary challenge lies in the generally suboptimal performance of current models. Conversely, the opportunity stems from their ability to effectively manage risk during drawdowns, alongside the potential to reshape their trading capabilities through diverse prompting strategies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Contributions</h2>
+    <div class="columns is-multiline">
+      <div class="column is-4">
+        <div class="box" style="height: 100%;">
+          <h3 class="title is-5">🔄 Continuously Evolving Benchmark</h3>
+          <p>A longitudinal auditing framework that eliminates look-ahead bias through perpetual forward-testing. Integrates multi-market, multi-lingual, and multi-source data to authentically reflect global market complexity.</p>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="box" style="height: 100%;">
+          <h3 class="title is-5">🔍 White-Box Auditing Mechanism</h3>
+          <p>Graded Strategy and Attitude Scaffolding provides the first systematic quantification of an autonomous agent's compliance capability, effectively decoupling genuine financial reasoning from unconstrained accidental profitability.</p>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="box" style="height: 100%;">
+          <h3 class="title is-5">📊 Comprehensive Empirical Insights</h3>
+          <p>Extensive experiments reveal significant market-dependent variations in reasoning efficacy and strategic adaptability. Models show exceptional risk mitigation in downtrends, highlighting their potential as intelligent trading assistants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Findings</h2>
+    <div class="content">
+      <div class="box">
+        <h4 class="title is-5">🧠 Finding 1: Reasoning Patterns are Model-Dependent</h4>
+        <p>
+          Models operating in thinking (CoT) mode show varied performance. Kimi-k2.5 improves from 27.63% to <strong>35.95%</strong> (+8.32 pp) with thinking enabled, while DeepSeek V3.2 exhibits the opposite pattern, suggesting that the thinking premium is model-dependent rather than universally beneficial.
+        </p>
+      </div>
+      <div class="box">
+        <h4 class="title is-5">🌍 Finding 2: Strategies and Risk Attitudes are Market-Dependent</h4>
+        <p>
+          Strategy scaffolding and risk attitudes exhibit market-dependent effectiveness. Models show different optimal configurations across A-share, HK, and US markets, reflecting the need for market-specific adaptation.
+        </p>
+      </div>
+      <div class="box">
+        <h4 class="title is-5">📈 Finding 3: Asymmetric Trend Adaptation</h4>
+        <p>
+          Models exhibit asymmetry in trend adaptation: they underperform benchmarks in bull markets (A-share +50.95%) but demonstrate superior risk management in bear markets (US -9.39%), with conservative strategies showing smaller losses.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom: 2rem;">Visualizations</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          <img src="static/images/1.png" alt="DynaStock Framework" style="max-height: 550px; width: auto; object-fit: contain; margin: 0 auto; display: block;"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Figure 1: DynaStock Framework Overview.</b> The framework integrates multimodal data construction (prices, news, reports), Graded Strategy and Attitude Scaffolding, and closed-loop execution engine to evaluate strategic adaptability.
+          </h2>
+        </div>
+
+        <div class="item">
+          <img src="static/images/3.png" alt="Benchmark Comparison" style="max-height: 550px; width: auto; object-fit: contain; margin: 0 auto; display: block;"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Table 1: Comparison with Existing Benchmarks.</b> DynaStock employs 2025 data across A-share, HK, and US markets with multimodal inputs (News, Reports, Time-series) and provides explainability through Graded Strategy and Attitude Scaffolding.
+          </h2>
+        </div>
+
+        <div class="item">
+          <img src="static/images/4.png" alt="Model Hierarchy Results" style="max-height: 550px; width: auto; object-fit: contain; margin: 0 auto; display: block;"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Figure 2: Model Hierarchy and Thinking Premium.</b> Total return comparison across models under Guided+Aggressive configuration on A-shares. Kimi-k2.5 (Think) leads with 35.95%, demonstrating model-dependent thinking premium.
+          </h2>
+        </div>
+
+        <div class="item">
+          <img src="static/images/5.png" alt="Strategy Scaffolding Results" style="max-height: 550px; width: auto; object-fit: contain; margin: 0 auto; display: block;"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Figure 3: Impact of Strategy Scaffolding.</b> Performance comparison across Free, Guided, and Strict modes in both A-share and US markets, showing market-dependent effectiveness of scaffolding levels.
+          </h2>
+        </div>
+
+        <div class="item">
+          <img src="static/images/6.png" alt="Risk Attitude Results" style="max-height: 550px; width: auto; object-fit: contain; margin: 0 auto; display: block;"/>
+          <h2 class="subtitle has-text-centered">
+            <b>Figure 4: Risk Attitude Compliance.</b> Performance metrics (TR, MDD, SR) across Aggressive, Neutral, and Conservative attitudes in A-share and US markets, demonstrating asymmetric trend adaptation.
+          </h2>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
+    <p class="subtitle has-text-centered">A-Share Market Performance (Guided + Aggressive, 90-day)</p>
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Model</th>
+            <th>TR (%)</th>
+            <th>SR</th>
+            <th>MDD (%)</th>
+            <th>Vol (%)</th>
+            <th>WR (%)</th>
+            <th>α (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #fff3cd;">
+            <td><strong>1</strong></td>
+            <td><strong>Kimi-k2.5 (Think)</strong></td>
+            <td><strong>35.95</strong></td>
+            <td>2.97</td>
+            <td>7.33</td>
+            <td>32.64</td>
+            <td>71.22</td>
+            <td>-3.35</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>GLM-5 (Think)</td>
+            <td>29.39</td>
+            <td>2.76</td>
+            <td>7.36</td>
+            <td>28.94</td>
+            <td>59.69</td>
+            <td>-9.72</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Minimax-m2.5 (Think)</td>
+            <td>28.10</td>
+            <td>3.01</td>
+            <td>5.28</td>
+            <td>28.04</td>
+            <td>74.45</td>
+            <td>-2.61</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Kimi-k2.5 (NoThink)</td>
+            <td>27.63</td>
+            <td>3.08</td>
+            <td>5.79</td>
+            <td>31.79</td>
+            <td>59.18</td>
+            <td>-2.64</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Gemini-3.1-Pro (Think)</td>
+            <td>25.34</td>
+            <td>2.78</td>
+            <td>6.72</td>
+            <td>36.20</td>
+            <td>65.34</td>
+            <td>-11.98</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Qwen3.5-Plus (Think)</td>
+            <td>25.17</td>
+            <td>2.68</td>
+            <td>5.82</td>
+            <td>29.90</td>
+            <td>61.83</td>
+            <td>-2.24</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>GPT-5.4 (Think)</td>
+            <td>24.71</td>
+            <td>2.48</td>
+            <td>7.75</td>
+            <td>28.64</td>
+            <td>61.60</td>
+            <td>-15.32</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Claude-Sonnet-4.5 (Think)</td>
+            <td>23.66</td>
+            <td>2.77</td>
+            <td>6.46</td>
+            <td>24.72</td>
+            <td>64.33</td>
+            <td>-8.91</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>GLM-5 (NoThink)</td>
+            <td>23.61</td>
+            <td>2.58</td>
+            <td>5.71</td>
+            <td>25.09</td>
+            <td>62.44</td>
+            <td>-12.02</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>DeepSeek V3.2 (NoThink)</td>
+            <td>17.64</td>
+            <td>2.28</td>
+            <td>6.25</td>
+            <td>22.55</td>
+            <td>49.21</td>
+            <td>-14.36</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>DeepSeek V3.2 (Think)</td>
+            <td>14.69</td>
+            <td>2.62</td>
+            <td>3.58</td>
+            <td>26.47</td>
+            <td>65.00</td>
+            <td>-8.17</td>
+          </tr>
+          <tr style="background-color: #e9ecef;">
+            <td>-</td>
+            <td><em>Benchmark (B&H)</em></td>
+            <td><em>50.95</em></td>
+            <td><em>3.26</em></td>
+            <td><em>9.73</em></td>
+            <td><em>39.71</em></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="has-text-centered" style="margin-top: 1rem; font-size: 0.9rem;">
+      <strong>Note:</strong> TR = Total Return, SR = Sharpe Ratio, MDD = Maximum Drawdown, Vol = Volatility, WR = Win Rate, α = Alpha
+    </p>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{dynastock2026,
+  title   = {DynaStock: A Dynamic Benchmark for Strategic Adaptability of Large Language Models in Realistic Multi-Market Trading},
+  author  = {Anonymous},
+  journal = {Anonymous Submission},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
